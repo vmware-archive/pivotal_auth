@@ -1,4 +1,4 @@
 Rails.application.routes.draw do
-
-  mount PivotalAuth::Engine => "/pivotal_auth"
+  mount PivotalAuth::Engine => '/'
+  root to: 'pages#home'
 end

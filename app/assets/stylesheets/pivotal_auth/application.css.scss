@@ -1,0 +1,52 @@
+@import "pivotal";
+
+body {
+  margin: 0;
+  @include pivotal_text;
+}
+
+section.pivotal-login-form {
+  width: 720px;
+  margin: 50px auto;
+  padding: 50px;
+  border-radius: 5px;
+  background-color: #f0f0f0;
+  text-align: center;
+
+  h1 {
+    @include pivotal_h2;
+    margin-top: 0;
+    color: $pivotal_grey;
+  }
+
+  .btn {
+    @include pivotal_button_primary;
+    margin: 0 5px;
+    padding: 10px 20px;
+    font-size: 15px;
+    font-weight: 600;
+  }
+}
+
+.alert.alert-notice {
+  box-sizing: border-box;
+  display: block;
+  height: 50px;
+  line-height: 20px;
+  margin: 0 0 10px 0;
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+
+  &.alert-notice, &.alert-success {
+    background-color: rgb(223, 240, 216);
+  }
+
+  &.alert-error {
+    background-color: rgb(240, 223, 216);
+  }
+
+  &.alert-warning {
+    background-color: rgb(252, 248, 227);
+  }
+}

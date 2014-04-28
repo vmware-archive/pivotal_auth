@@ -13,10 +13,13 @@ Gem::Specification.new do |s|
   s.summary     = "Authentication gem for Pivotal Labs."
   s.description = ""
 
-  s.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.rdoc"]
+  s.files = Dir["{app,config,db,lib}/**/*", "Rakefile", "README.md"]
   s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "rails", ">= 3.2.0"
+  s.add_dependency "omniauth-google-apps"
+  s.add_dependency "pivotal-sass"
+  s.add_dependency "compass-rails"
 
   s.add_development_dependency "pg"
   s.add_development_dependency "rspec-rails"
