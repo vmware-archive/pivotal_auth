@@ -20,5 +20,9 @@ module PivotalAuth
         provider :google_apps, :domain => 'pivotallabs.com'
       end
     end
+
+    generators do
+      require "pivotal_auth/generators/initializer"
+    end
   end
 end
