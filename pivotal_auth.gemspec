@@ -7,8 +7,8 @@ require "pivotal_auth/version"
 Gem::Specification.new do |s|
   s.name        = "pivotal_auth"
   s.version     = PivotalAuth::VERSION
-  s.authors     = ["David Lee", "Geoff Pleiss"]
-  s.email       = ["dlee@pivotallabs.com", "gpleiss@pivotallabs.com"]
+  s.authors     = ["David Lee", "Geoff Pleiss", "Jordi Noguera"]
+  s.email       = ["dlee@pivotallabs.com", "gpleiss@pivotallabs.com", "jordi@pivotallabs.com"]
   s.homepage    = "https://github.com/pivotal/pivotal_auth"
   s.summary     = "Authentication gem for Pivotal Labs."
   s.description = ""
