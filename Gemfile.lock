@@ -1,6 +1,6 @@
 GIT
-  remote: git://github.com/primedia/okta_saml.git
-  revision: d4f282343f507d283e2bacf9b4d9e65332317af0
+  remote: git://github.com/pivotal/okta_saml.git
+  revision: 2fcee597f83e00e3620da7b978887452c2ae2967
   branch: dev
   specs:
     okta_saml (2.0.0)
