@@ -15,26 +15,31 @@ describe ApplicationController do
   describe "#user_signed_in?" do
     subject { controller.user_signed_in? }
 
-    it "returns true when user is signed in" do
-      session[:email] = "pivot@pivotallabs.com"
+    it "returns true when a user is signed in" do
+      session[:emails] = ["pivot@pivotallabs.com"]
+      expect(subject).to be_true
+    end
+
+    it "returns true when more than one user is signed in" do
+      session[:emails] = ["pivot@pivotallabs.com", "bob@example.com"]
       expect(subject).to be_true
     end
 
     it "returns false when user is not signed in" do
-      session[:email] = nil
+      session[:emails] = []
       expect(subject).to be_false
     end
   end
 
-  describe "#current_user_email" do
-    it "returns the email address when user is signed in" do
-      session[:email] = "pivot@pivotallabs.com"
-      expect(subject.current_user_email).to eq("pivot@pivotallabs.com")
+  describe "#current_user_emails" do
+    it "returns the email address when users are signed in" do
+      session[:emails] = ["pivot@pivotallabs.com", "ben@example.com"]
+      expect(subject.current_user_emails).to eq(["pivot@pivotallabs.com", "ben@example.com"])
     end
 
-    it "returns nil when user is not signed in" do
-      session[:email] = nil
-      expect(subject.current_user_email).to be_nil
+    it "returns [] when user is not signed in" do
+      session[:emails] = nil
+      expect(subject.current_user_emails).to be_empty
     end
   end
 
@@ -48,7 +53,7 @@ describe ApplicationController do
 
     context "when logged in" do
       before do
-        session[:email] = 'user@example.com'
+        session[:emails] = ['user@example.com']
       end
 
       it "redirects to requested url" do
