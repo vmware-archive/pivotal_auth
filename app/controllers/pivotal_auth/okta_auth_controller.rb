@@ -1,6 +1,5 @@
 module PivotalAuth
   class OktaAuthController < SamlController
-    layout 'pivotal_auth/application'
     skip_before_filter :authenticate_user!
 
     def sign_in(user)
