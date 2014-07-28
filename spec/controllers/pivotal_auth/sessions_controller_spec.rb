@@ -22,8 +22,7 @@ module PivotalAuth
     describe "#create" do
       def set_request_envs
         request.env["omniauth.auth"] = {
-          :uid => 123,
-          :info => {:email => "fozzybear@MUPPETS.com"}
+          :uid => "fozzybear@MUPPETS.com"
         }
       end
 

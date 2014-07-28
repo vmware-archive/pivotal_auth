@@ -8,7 +8,7 @@ module PivotalAuth
 
     def create
       auth = request.env['omniauth.auth']
-      session[:email] = auth[:info][:email].downcase
+      session[:email] = auth[:uid].downcase
       redirect_to session[:return_to] || main_app.root_url
     end
 
