@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'omniauth-google-apps'
   s.add_dependency 'pivotal-sass'
   s.add_dependency 'compass-rails'
+  s.add_dependency 'omniauth-saml'
 
   s.add_development_dependency 'pg'
   s.add_development_dependency 'rspec-rails'
