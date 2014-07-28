@@ -175,6 +175,8 @@ PLATFORMS
 
 DEPENDENCIES
   capybara
+  omniauth-google-oauth2
+  omniauth-saml
   pg
   pivotal_auth!
   pry

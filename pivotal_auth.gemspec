@@ -17,10 +17,10 @@ Gem::Specification.new do |s|
   s.test_files = Dir['spec/**/*']
 
   s.add_dependency 'rails', '>= 3.2.0'
-  s.add_dependency 'omniauth-google-apps'
   s.add_dependency 'pivotal-sass'
   s.add_dependency 'compass-rails'
   s.add_dependency 'omniauth-saml'
+  s.add_dependency 'omniauth-google-oauth2'
 
   s.add_development_dependency 'pg'
   s.add_development_dependency 'rspec-rails'

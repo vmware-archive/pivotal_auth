@@ -3,11 +3,12 @@ PivotalAuth::Engine.routes.draw do
   get 'logout' => 'sessions#destroy', as: 'logout'
 
   get 'auth/failure' => 'sessspions#new'
-  match 'auth/google_apps/callback' => 'sessions#create', :via => [:get, :post]
 
   match '/auth/saml/callback', to: 'sessions#create', via: [:get, :post]
+
+  match '/auth/google_oauth2/callback', to: 'sessions#create', via: [:get, :post]
 end
 
 def google_auth_path
-  '/auth/google_apps'
+  '/auth/google_oauth2'
 end
