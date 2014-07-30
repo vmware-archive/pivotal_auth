@@ -21,8 +21,16 @@ module PivotalAuth
       def authenticate_user!
         unless user_signed_in?
           session[:return_to] = request.url || root_url
-          redirect_to pivotal_auth.login_path
+          respond_to do |format|
+            format.html { redirect_to pivotal_auth.login_path }
+            format.json { permission_denied }
+            format.xml { permission_denied }
+          end
         end
+      end
+
+      def permission_denied
+        render :text => 'Unauthorized', :layout => false, :status => :unauthorized
       end
     end
   end

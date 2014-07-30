@@ -40,9 +40,23 @@ describe ApplicationController do
 
   describe "requests where login is required" do
     context "when not logged in" do
-      it "redirects to google auth" do
+      it "redirects to login screen" do
         get :index
         expect(response).to redirect_to '/login'
+      end
+
+      context "when requesting json" do
+        it "returns a 401 Unauthorized" do
+          get :index, :format => :json
+          expect(response.status).to eq(401)
+        end
+      end
+
+      context "when requesting xml" do
+        it "returns a 401 Unauthorized" do
+          get :index, :format => :xml
+          expect(response.status).to eq(401)
+        end
       end
     end
 
