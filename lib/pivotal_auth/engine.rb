@@ -17,7 +17,7 @@ module PivotalAuth
 
     initializer 'pivotal_auth.omniauth_google_apps' do
       Rails.application.config.middleware.use OmniAuth::Builder do
-        provider :google_apps, :domain => 'pivotallabs.com'
+        provider :google_apps, :domain => 'pivotal.io'
       end
     end
 
