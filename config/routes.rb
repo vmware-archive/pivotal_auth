@@ -1,8 +1,9 @@
 PivotalAuth::Engine.routes.draw do
-  get 'login' => 'sessions#new', as: 'login'
-  get 'logout' => 'sessions#destroy', as: 'logout'
+  get '/login' => 'sessions#new', as: 'login'
+  get '/logout/:email' => 'sessions#destroy',     as: 'logout', constraints: { email: /[^\/]+/ }
+  get '/logout'        => 'sessions#destroy_all', as: 'logout_all'
 
-  get 'auth/failure' => 'sessions#new'
+  get '/auth/failure' => 'sessions#new'
   match 'auth/google_apps/callback' => 'sessions#create', :via => [:get, :post]
 
   get '/saml/init' => 'okta_auth#init'

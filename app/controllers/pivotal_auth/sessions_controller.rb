@@ -7,13 +7,19 @@ module PivotalAuth
     end
 
     def create
+      session[:emails] ||= []
       auth = request.env['omniauth.auth']
-      session[:email] = auth[:info][:email].downcase
+      session[:emails] << auth[:info][:email].downcase
       redirect_to session[:return_to] || main_app.root_url
     end
 
     def destroy
-      session[:email] = nil
+      session[:emails].delete(params[:email])
+      redirect_to login_path, notice: "Successfully logged out #{params[:email]}."
+    end
+
+    def destroy_all
+      session[:emails] = []
       redirect_to login_path, notice: "Successfully logged out."
     end
   end

@@ -20,19 +20,15 @@ module PivotalAuth
     end
 
     describe "#create" do
-      def set_request_envs
+      before do
         request.env["omniauth.auth"] = {
           :uid => 123,
           :info => {:email => "fozzybear@MUPPETS.com"}
         }
       end
 
-      before do
-        set_request_envs
-      end
-
       it "stores the user's email" do
-        expect { post :create }.to change { session[:email] }.to("fozzybear@muppets.com")
+        expect { post :create }.to change { session[:emails] }.to(["fozzybear@muppets.com"])
       end
 
       it "redirects to the apps page" do
@@ -41,22 +37,41 @@ module PivotalAuth
       end
     end
 
-    describe "#destroy" do
-      it "destroys the session" do
-        session[:email] = "bar@example.com"
-        delete :destroy
+    describe "#destroy_all" do
+      before do
+        session[:emails] = ["foo@example.com", "bar@example.com"]
+        delete :destroy_all
+      end
 
-        session[:email].should be_nil
+      it "removes all emails from the session" do
+        session[:emails].should be_empty
       end
 
       it "redirects to the login page" do
-        delete :destroy
         response.should redirect_to login_path
       end
 
       it "sets the flash message" do
-        delete :destroy
         flash[:notice].should eq "Successfully logged out."
+      end
+    end
+
+    describe "#destroy" do
+      before do
+        session[:emails] = ["foo@example.com", "bar@example.com"]
+        delete :destroy, email: "bar@example.com"
+      end
+
+      it "removes the specified email from the session" do
+        session[:emails].should eq(["foo@example.com"])
+      end
+
+      it "redirects to the login page" do
+        response.should redirect_to login_path
+      end
+
+      it "sets the flash message" do
+        flash[:notice].should eq "Successfully logged out bar@example.com."
       end
     end
   end
