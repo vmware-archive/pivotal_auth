@@ -36,3 +36,23 @@ To get these values, follow the [instructions](https://github.com/primedia/okta_
 - `current_user_email` - Returns the email of the currently logged in user.
 - `user_signed_in?` - Returns if a user is signed in
 - `authenticate_user!` - A before filter that will redirect to '/login' if no user is signed in. It will also set a redirect url to the current path.
+
+## Mocking
+
+You can mock out the actual network calls by using the OmniAuth mocking support:
+
+``` ruby
+OmniAuth.config.test_mode = true
+```
+
+...and in your specs, setup each user before attempting to login:
+
+```
+OmniAuth.config.add_mock(:default, {:info => {:email => "#{name}@pivotallabs.com"}})
+```
+
+Bonus points for adding webmock:
+
+```
+WebMock.disable_net_connect!
+```
